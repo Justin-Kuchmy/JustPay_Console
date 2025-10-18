@@ -3,6 +3,8 @@
 
 // employee_select_dialog.h
 #include <QDialog>
+#include "../Include/Entities/DataObjects.h"
+#include <qt5/QtWidgets/qlistwidget.h>
 
 
 namespace Ui {
@@ -14,10 +16,14 @@ class EmployeeSelectDialog : public QDialog {
 
 public:
     explicit EmployeeSelectDialog(QWidget *parent = nullptr);
+    ~EmployeeSelectDialog();
     QString getSelectedEmployee() const;
-
+    std::vector<Employee>* empList;
+    void populateEmployeeList();
+    
 private slots:
     void on_buttonBox_accepted();
+    void onEmployeeSelected(QListWidgetItem* item);
 
 private:
     Ui::EmployeeSelectDialog *ui;
